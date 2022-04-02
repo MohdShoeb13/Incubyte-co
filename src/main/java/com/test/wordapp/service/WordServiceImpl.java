@@ -1,6 +1,7 @@
 package com.test.wordapp.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,27 +14,34 @@ public class WordServiceImpl implements WordsService {
 	
 	@Autowired
 	private WordRepository wordRepository;
-
-	@Override
-	public Words createWord(Words word) {
-		return this.wordRepository.save(word);
+	 
+	public List<Words> getAllWords(){
+		return (List<Words>)this.wordRepository.findAll();
 	}
-
-	@Override
-	public Words upadteWord(Words word) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public Words getWordById(Long id) {
+		Words word = null;
+		
+		try {
+			this.wordRepository.findById(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return word;
 	}
-
-	@Override
-	public List<Words> getWords() {
-		return this.wordRepository.findAll();
+	
+	public Words addWord(Words word) {
+		Words result = wordRepository.save(word);
+		return result;
 	}
-
-	@Override
+	
 	public void deleteWord(Long wordId) {
-		// TODO Auto-generated method stub
-		this.wordRepository.deleteById(wordId);;
+		wordRepository.deleteById(wordId);
+	}
+	
+	public void updateWord(Words word, Long wordId) {
+		word.setId(wordId);
+		wordRepository.save(word);
 	}
 
 }
