@@ -32,14 +32,14 @@ public class WordController {
 		return ResponseEntity.of(Optional.of(list));
 	}
 	
-	@GetMapping("/words/{id}")
-	public ResponseEntity<Words> getBook(@PathVariable("id") Long id){
-		Optional<Words> word = wordsService.getWordById(id);
-		if(word.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-		}
-		return ResponseEntity.ok(word.get());
-	}
+//	@GetMapping("/words/{id}")
+//	public ResponseEntity<Words> getBook(@PathVariable("id") Long id){
+//		Optional<Words> word = wordsService.getWordById(id);
+//		if(word.isEmpty()) {
+//			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+//		}
+//		return ResponseEntity.ok(word.get());
+//	}
 	
 	
 	@PostMapping("/words")
