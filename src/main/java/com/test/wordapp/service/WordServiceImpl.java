@@ -31,9 +31,9 @@ public class WordServiceImpl implements WordsService {
 	}
 
 	@Override
-	public Words deleteWord(Long wordId) {
+	public void deleteWord(Long wordId) {
 		// TODO Auto-generated method stub
-		return null;
+		this.wordRepository.deleteById(wordId);;
 	}
 
 }
