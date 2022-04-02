@@ -19,11 +19,11 @@ public class WordServiceImpl implements WordsService {
 		return (List<Words>)this.wordRepository.findAll();
 	}
 	
-	public Words getWordById(Long id) {
-		Words word = null;
+	public Optional<Words> getWordById(Long id) {
+		Optional<Words> word = null;
 		
 		try {
-			this.wordRepository.findById(id);
+			word = this.wordRepository.findById(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
