@@ -16,8 +16,7 @@ public class WordServiceImpl implements WordsService {
 
 	@Override
 	public Words createWord(Words word) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.wordRepository.save(word);
 	}
 
 	@Override
